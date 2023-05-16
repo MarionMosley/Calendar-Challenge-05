@@ -1,14 +1,19 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
-var input = document.getElementById('text').innerHTML;
 
-    document.querySelectorAll('.saveBtn').forEach(item => {
-      item.addEventListener('click', event => {
-        localStorage.setItem('event', input);
-      })
+$(function () {
+var test = JSON.parse(localStorage.getItem('event'));
+var input = document.getElementById('text').textContent;
+
+// Adds Event Listener to all save buttons
+
+  document.querySelectorAll('.saveBtn').forEach(item => {
+    item.addEventListener('click', event => {
+      localStorage.setItem('event', JSON.stringify(input));
+      console.log(input);
     })
+  })
  
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
@@ -56,6 +61,8 @@ var input = document.getElementById('text').innerHTML;
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
     //
+    
+
     // TODO: Add code to display the current date in the header of the page.
     var date = dayjs().format('dddd, MMMM D');
     $('#currentDay').text(date + "th");
