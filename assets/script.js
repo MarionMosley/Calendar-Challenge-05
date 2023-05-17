@@ -3,17 +3,23 @@
 // in the html.
 
 $(function () {
-var input = document.getElementById('text').textContent;
+
 
 // Adds Event Listener to all save buttons
 
   document.querySelectorAll('.saveBtn').forEach(item => {
-    item.addEventListener('click', event => {
-      localStorage.setItem('event', JSON.stringify(input));
-      console.log(input);
-      event.preventDefault();
-    })
+    item.addEventListener('click', saveInput)
   })
+
+  function saveInput(event) {
+    var target = event.target;
+    var textArea = target.querySelector('.description')
+    var input = target.parentNode.children[1].value;
+    localStorage.setItem('event', JSON.stringify(input));
+    console.log(target);
+    console.log(input);
+    event.preventDefault();
+  }
 
  var test = localStorage.getItem('event');
     // TODO: Add a listener for click events on the save button. This code should
