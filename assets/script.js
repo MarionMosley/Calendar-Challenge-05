@@ -3,7 +3,6 @@
 // in the html.
 
 $(function () {
-var test = JSON.parse(localStorage.getItem('event'));
 var input = document.getElementById('text').textContent;
 
 // Adds Event Listener to all save buttons
@@ -12,9 +11,11 @@ var input = document.getElementById('text').textContent;
     item.addEventListener('click', event => {
       localStorage.setItem('event', JSON.stringify(input));
       console.log(input);
+      event.preventDefault();
     })
   })
- 
+
+ var test = localStorage.getItem('event');
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
