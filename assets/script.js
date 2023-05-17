@@ -13,15 +13,18 @@ $(function () {
 
   function saveInput(event) {
     var target = event.target;
-    var textArea = target.querySelector('.description')
+    
     var input = target.parentNode.children[1].value;
-    localStorage.setItem('event', JSON.stringify(input));
-    console.log(target);
+    localStorage.setItem('event', input);
     console.log(input);
     event.preventDefault();
   }
 
+ var textArea = document.querySelector('#ten')
  var test = localStorage.getItem('event');
+
+ textArea.innerHTML = test;
+
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
